@@ -1,7 +1,9 @@
+import os
 from flask import Flask, render_template, request, redirect, url_for, flash
 
 app = Flask(__name__)
-app.secret_key = "birthday_secret"
+# Best practice: use an environment variable for secret key, fallback to string if local
+app.secret_key = os.environ.get("SECRET_KEY", "birthday_secret")
 
 CORRECT_PASSWORD = "11thDec"
 
@@ -9,11 +11,9 @@ CORRECT_PASSWORD = "11thDec"
 def home():
     return render_template("index.html")
 
-
 @app.route("/verify", methods=["POST"])
 def verify():
-
-    entered_password = request.form["password"]
+    entered_password = request.form.get("password", "")
 
     if entered_password == CORRECT_PASSWORD:
         return redirect(url_for("first_page"))
@@ -21,10 +21,10 @@ def verify():
     flash("Incorrect Password!")
     return redirect(url_for("home"))
 
-
 @app.route("/next_page")
 def first_page():
-    return render_template("First_page.html")
+    # Make sure 'first_page.html' matches the EXACT casing of your file name in templates/
+    return render_template("first_page.html") 
 
 @app.route("/second_page")
 def second_page():
@@ -55,4 +55,6 @@ def eighth_page():
     return render_template("eighth_page.html")
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    # Binds to the PORT assigned by Render (or defaults to 5000 locally)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port, debug=False)
