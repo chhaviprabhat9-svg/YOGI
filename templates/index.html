@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Invitation</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/index.css') }}">
+</head>
+
+<body>
+
+<div class="a4">
+
+    <div class="overlay">
+
+        <div class="top">
+
+            <h1 class="heading">
+                ❤️Happy Birthday❤️
+            </h1>
+
+            <img src="{{ url_for('static', filename='images/cake.png') }}"
+                 alt="Birthday Cake"
+                 class="birthday-image">
+
+        </div>
+
+        <!-- Flash Message -->
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="error">
+                    {{ messages[0] }}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <form action="{{ url_for('verify') }}" method="POST">
+
+            <div class="user-card">
+
+                <h2>Chhavi's Invitation 😉</h2>
+
+                <div class="info">
+                    <span>Name</span>
+                    <p>Vijay Sharma</p>
+                </div>
+
+                <div class="info">
+                    <span>Date</span>
+                    <p>1st August, 2026</p>
+                </div>
+
+                <div class="info">
+                    <span>Invitation Password</span>
+
+                    <input
+                        type="password"
+                        name="password"
+                        class="password-box"
+                        placeholder="Enter Password"
+                        required>
+                </div>
+
+                <button type="submit" class="next-btn">
+                    Next Page →
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+</html>

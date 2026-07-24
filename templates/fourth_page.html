@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter IV — Agent Vijay Dossier</title>
+
+    <!-- Vintage & Intelligence Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@500;700;900&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/fourth_page.css') }}">
+</head>
+<body>
+
+<!-- Ambient Backdrops -->
+<div class="candlelight-overlay"></div>
+<canvas id="sparkler-canvas"></canvas>
+
+<!-- Tactical Radar Overlay -->
+<div class="radar-sweep"></div>
+
+<!-- Floating Vintage Balloons -->
+<div class="balloon-container" id="balloon-container"></div>
+
+<!-- Side Candles -->
+<div class="side-candle left-candle"><div class="flame"></div></div>
+<div class="side-candle right-candle"><div class="flame"></div></div>
+
+<div class="torn-paper-wrapper">
+    <div class="a4 parchment-paper">
+
+        <!-- Watermark -->
+        <div class="bg-watermark">AGENT VIJAY // CLASSIFIED</div>
+
+        <!-- Classified Header Stamps & Clearance Metadata -->
+        <div class="confidential-stamp-group">
+            <div class="confidential-stamp red-stamp">
+                <span class="stamp-main">TOP SECRET</span>
+                <span class="stamp-sub">FOR AGENT VIJAY EYES ONLY</span>
+            </div>
+            <div class="confidential-tag clearance-tag">CLEARANCE LEVEL 5</div>
+        </div>
+
+        <div class="file-meta-tag">
+            <span>DOSSIER ID: #AGENT-VJ-007</span>
+            <span>TARGET: VIJAY</span>
+            <span>HANDLED BY: AGENT CHHAVI</span>
+            <span>SECURITY: ENCRYPTED SCRATCH SEALS</span>
+        </div>
+
+        <!-- Header -->
+        <header class="header">
+            <div class="classified-badge">⚠️ INTELLIGENCE DOSSIER — CHAPTER IV</div>
+            <h1 class="title">Intercepted <span class="highlight">Intel</span> & Confessions</h1>
+            
+            <!-- Interactive Fingerprint Scanner -->
+            <div class="fingerprint-box" id="biometric-box" onclick="authenticateAgent()">
+                <div class="fp-icon">🖐️</div>
+                <div class="fp-status" id="fp-status">TAP FINGERPRINT TO VERIFY IDENTITY</div>
+            </div>
+        </header>
+
+        <!-- 5 Confidential Sticky Note Scratch Cards -->
+        <section class="sticky-notes-grid">
+            
+            <!-- Sticky Note 1 -->
+            <div class="sticky-note-wrapper tilt-1">
+                <div class="tape-tag">DIRECTIVE #01</div>
+                <div class="pin">📌</div>
+                <div class="secret-text">
+                    <p>CLASSIFIED INTEL #1</p>
+                    <span class="redacted">Bohot phle hi bolna tha ye....Ig Day 1 se hi, I did had some feelings for you, frndship nhi tha wo....but haa uske baad I kept smiling for straight 3 hours aur wo chats pe replay, re-read kiye the hum (you remember wo feb wala co-incidences like wo leg injury n'all?) 🙈</span>
+                </div>
+                <canvas class="scratch-canvas" id="scratch1"></canvas>
+            </div>
+
+            <!-- Sticky Note 2 -->
+            <div class="sticky-note-wrapper tilt-2">
+                <div class="tape-tag">RESTRICTED</div>
+                <div class="pin">📌</div>
+                <div class="secret-text">
+                    <p>CLASSIFIED INTEL #2</p>
+                    <span class="redacted">Not very funny but apne bohot phle ke arguements ke beech, jb cosmos pe aate the tb hm kriti ke saath milkr sirf tmhra chugli kiye the but jyada srs wala ni...simply "Yogi smjhta ni hai" [first n last time jb hm kisi 3rd person se kiye the ye]🤫</span>
+                </div>
+                <canvas class="scratch-canvas" id="scratch2"></canvas>
+            </div>
+
+            <!-- Sticky Note 3 -->
+            <div class="sticky-note-wrapper tilt-3">
+                <div class="tape-tag">AGENT VIJAY ONLY</div>
+                <div class="pin">📌</div>
+                <div class="secret-text">
+                    <p>CLASSIFIED INTEL #3</p>
+                    <span class="redacted">Very honest, aur hm ye ab bhi krte hai....sent photos ko loop mai dekhna, ya fir videos dekhna...etc📱❤️</span>
+                </div>
+                <canvas class="scratch-canvas" id="scratch3"></canvas>
+            </div>
+
+            <!-- Sticky Note 4 -->
+            <div class="sticky-note-wrapper tilt-4">
+                <div class="tape-tag">EYES ONLY</div>
+                <div class="pin">📌</div>
+                <div class="secret-text">
+                    <p>CLASSIFIED INTEL #4</p>
+                    <span class="redacted">Weird habit hai but hai...I imagine situations, basically daydreaming like "Agar yogi hota toh kya krta?"</span>
+                </div>
+                <canvas class="scratch-canvas" id="scratch4"></canvas>
+            </div>
+
+            <!-- Sticky Note 5 -->
+            <div class="sticky-note-wrapper tilt-5 center-note">
+                <div class="tape-tag ultra-classified">MAX CLEARANCE</div>
+                <div class="pin">📌</div>
+                <div class="secret-text">
+                    <p>FINAL MISSION INTEL</p>
+                    <span class="redacted">Waise hm uss din confess isliye kiye the kyuki mereko pta tha tm accept krloge, warna tmko lgta hai hm bolte?..actually mereko idea lg gya tha ki tmko idea lg gya hai mera....ig ye tmko pta nhi tha✨❤️</span>
+                </div>
+                <canvas class="scratch-canvas" id="scratch5"></canvas>
+            </div>
+
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer-note">
+            <div class="declassified-stamp">AUTHORIZED BY CHHAVI</div>
+            <p class="handwritten-closing">End of classified file...</p>
+            <p class="signature-line">Dossier Authored By, <span>Chhavi</span></p>
+        </footer>
+
+        <!-- Navigation Buttons -->
+        <nav class="vintage-nav-container">
+            <a href="{{ url_for('third_page') }}" class="vintage-btn">← Previous Chapter</a>
+            <a href="{{ url_for('fifth_page') }}" class="vintage-btn">Go to next, BABE</a>
+        </nav>
+
+    </div>
+</div>
+
+<script src="{{ url_for('static', filename='js/fourth_page.js') }}"></script>
+</body>
+</html>

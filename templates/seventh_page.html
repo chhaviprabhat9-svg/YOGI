@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Celestial Wish — Seventh Page</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Plus+Jakarta+Sans:wght@300;400;600&family=Sacramento&display=swap" rel="stylesheet">
+
+    <!-- Canvas Confetti Library -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/seventh_page.css') }}">
+</head>
+<body>
+
+<!-- Dynamic Starfield Background Canvas -->
+<canvas id="stars-canvas"></canvas>
+
+<!-- TOP NAVIGATION BAR -->
+<div class="top-nav">
+    <a href="{{ url_for('sixth_page') }}" class="nav-btn back-btn">
+        <span>←</span> Back
+    </a>
+</div>
+
+<main class="page-container">
+
+    <!-- HEADER SECTION -->
+    <header class="cosmic-header">
+        <span class="badge">CHAPTER VII • THE CELESTIAL RITE</span>
+        <h1 class="glow-title">Ignite The Starlight</h1>
+        <p class="subtitle" id="instruction-text">Click the candles to light them, then blow into your mic or click them to make a wish ✨</p>
+    </header>
+
+    <!-- INTERACTIVE CAKE CONTAINER -->
+    <div class="cake-sanctuary">
+        <div class="cake" id="cake">
+            <!-- CAKE TOP LAYER -->
+            <div class="cake-layer layer-top">
+                <div class="frosting-drips"></div>
+            </div>
+            <!-- CAKE MIDDLE LAYER -->
+            <div class="cake-layer layer-middle"></div>
+            <!-- CAKE BOTTOM LAYER -->
+            <div class="cake-layer layer-bottom"></div>
+
+            <!-- CANDLES HOLDER -->
+            <div class="candles-container">
+                <div class="candle" onclick="toggleCandle(this)">
+                    <div class="flame"></div>
+                    <div class="wick"></div>
+                </div>
+                <div class="candle" onclick="toggleCandle(this)">
+                    <div class="flame"></div>
+                    <div class="wick"></div>
+                </div>
+                <div class="candle" onclick="toggleCandle(this)">
+                    <div class="flame"></div>
+                    <div class="wick"></div>
+                </div>
+                <div class="candle" onclick="toggleCandle(this)">
+                    <div class="flame"></div>
+                    <div class="wick"></div>
+                </div>
+                <div class="candle" onclick="toggleCandle(this)">
+                    <div class="flame"></div>
+                    <div class="wick"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="controls-bar">
+            <button class="action-btn" id="light-btn" onclick="lightAllCandles()">🔥 Light All Candles</button>
+            <button class="action-btn mic-btn" id="mic-btn" onclick="initMic()">🎙️ Enable Blow Detection</button>
+        </div>
+    </div>
+
+    <!-- FIVE WISHES SECTION (REVEALED AFTER BLOWING CANDLES) -->
+    <section class="wishes-section hidden" id="wishes-section">
+        <div class="wish-banner">
+            <h2>✨ Five Things I Wish For You ✨</h2>
+            <p>Written in the stars, carried by the solar wind...</p>
+        </div>
+
+        <div class="constellation-grid">
+            
+            <div class="wish-card" style="--delay: 0.2s;">
+                <div class="card-glow"></div>
+                <div class="wish-number">01</div>
+                <div class="wish-icon">🌿</div>
+                <h3>Boundless Health</h3>
+                <p>I hope you always stay healthy, grounded, and full of vitality, with a body that feels strong and a heart that rests easy.</p>
+            </div>
+
+            <div class="wish-card" style="--delay: 0.4s;">
+                <div class="card-glow"></div>
+                <div class="wish-number">02</div>
+                <div class="wish-icon">💫</div>
+                <h3>Fulfilled Dreams</h3>
+                <p>I hope every dream you’ve quietly held onto finds its way to you, unfolding smoothly into your reality.</p>
+            </div>
+
+            <div class="wish-card" style="--delay: 0.6s;">
+                <div class="card-glow"></div>
+                <div class="wish-number">03</div>
+                <div class="wish-icon">🕊️</div>
+                <h3>Unbroken Kindness</h3>
+                <p>I hope you never lose your warmth and soft-hearted kindness, no matter how cold or loud the world gets.</p>
+            </div>
+
+            <div class="wish-card" style="--delay: 0.8s;">
+                <div class="card-glow"></div>
+                <div class="wish-number">04</div>
+                <div class="wish-icon">☀️</div>
+                <h3>Everlasting Joy</h3>
+                <p>I hope genuine happiness follows you everywhere—in little everyday moments, warm laughter, and quiet places.</p>
+            </div>
+
+            <div class="wish-card featured-card" style="--delay: 1.0s;">
+                <div class="card-glow"></div>
+                <div class="wish-number">05</div>
+                <div class="wish-icon">👑</div>
+                <h3>Your Greatest Chapter</h3>
+                <p>I hope this year becomes your best yet—filled with triumphs, peaceful nights, and unforgettable beauty.</p>
+            </div>
+
+        </div>
+
+        <!-- ENDING MESSAGE -->
+        <div class="closing-vault">
+            <blockquote class="cosmic-quote">
+                "May the universe align to grant every quiet wish you haven't spoken out loud yet."
+            </blockquote>
+        </div>
+
+        <!-- NEXT PAGE NAVIGATION BUTTON -->
+        <div class="next-nav-container">
+            <a href="{{ url_for('eighth_page') }}" class="nav-btn next-btn">
+                Next Chapter <span>→</span>
+            </a>
+        </div>
+
+    </section>
+
+</main>
+
+<script src="{{ url_for('static', filename='js/seventh_page.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,343 @@
+/* ==========================
+        GLOBAL STYLES
+========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    min-height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    background:linear-gradient(135deg,#a96b00,#ffd86f,#7d5100);
+}
+
+/* ==========================
+          A4 PAGE
+========================== */
+
+.a4{
+
+    width:210mm;
+    height:297mm;
+
+    background:url("../images/bannerimg.jpg") center center/cover no-repeat;
+
+    border-radius:30px;
+
+    overflow:hidden;
+
+    position:relative;
+
+    box-shadow:0 25px 70px rgba(0,0,0,.45);
+
+    animation:fadeIn 1.2s ease;
+}
+
+/* ==========================
+          OVERLAY
+========================== */
+
+.overlay{
+
+    width:100%;
+    height:100%;
+
+    background:rgba(0,0,0,.35);
+
+    backdrop-filter:blur(4px);
+
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:45px;
+}
+
+/* ==========================
+         TOP SECTION
+========================== */
+
+.top{
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+/* ==========================
+      HAPPY BIRTHDAY
+========================== */
+
+.heading{
+
+    font-size:61px;
+
+    font-weight:900;
+
+    letter-spacing:3px;
+
+    background:linear-gradient(
+        90deg,
+        #ff0055,
+        #ff9800,
+        #ffee00,
+        #00ff99,
+        #00c3ff,
+        #9c27b0,
+        #ff0055
+    );
+
+    background-size:300%;
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+
+    animation:rainbow 8s linear infinite;
+
+    margin-bottom:15px;
+}
+
+/* ==========================
+       BIRTHDAY IMAGE
+========================== */
+
+.birthday-image{
+
+    width:230px;
+
+    animation:float 4s ease-in-out infinite;
+
+    filter:drop-shadow(0 10px 20px rgba(0,0,0,.45));
+
+    margin-bottom:20px;
+}
+
+/* ==========================
+       INVITATION CARD
+========================== */
+
+.user-card{
+
+    width:440px;
+
+    padding:35px;
+
+    border-radius:25px;
+
+    background:rgba(255,255,255,.18);
+
+    backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,.25);
+
+    box-shadow:0 15px 40px rgba(0,0,0,.35);
+
+    transition:.35s;
+}
+
+.user-card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 25px 50px rgba(0,0,0,.45);
+}
+
+.user-card h2{
+
+    text-align:center;
+
+    color:white;
+
+    margin-bottom:30px;
+
+    font-size:32px;
+}
+
+/* ==========================
+         INFO
+========================== */
+
+.info{
+
+    margin-bottom:22px;
+}
+
+.info span{
+
+    display:block;
+
+    color:#ffd54f;
+
+    font-weight:bold;
+
+    margin-bottom:8px;
+
+    font-size:16px;
+
+    letter-spacing:1px;
+}
+
+.info p{
+
+    color:white;
+
+    font-size:22px;
+}
+
+/* ==========================
+      PASSWORD INPUT
+========================== */
+
+.password-box{
+
+    width:100%;
+
+    padding:15px 18px;
+
+    border:none;
+
+    border-radius:15px;
+
+    outline:none;
+
+    font-size:17px;
+
+    background:rgba(255,255,255,.92);
+
+    transition:.3s;
+}
+
+.password-box:focus{
+
+    transform:scale(1.02);
+
+    box-shadow:0 0 15px rgba(255,215,0,.9);
+}
+
+/* ==========================
+          BUTTON
+========================== */
+
+.next-btn{
+
+    width:100%;
+
+    margin-top:10px;
+
+    padding:17px;
+
+    border:none;
+
+    border-radius:50px;
+
+    cursor:pointer;
+
+    color:white;
+
+    font-size:22px;
+
+    font-weight:bold;
+
+    background:linear-gradient(
+        135deg,
+        #ff9800,
+        #ffd54f,
+        #ff9800
+    );
+
+    background-size:250%;
+
+    transition:.4s;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.35);
+}
+
+.next-btn:hover{
+
+    background-position:right;
+
+    transform:translateY(-4px);
+
+    box-shadow:0 20px 35px rgba(0,0,0,.45);
+}
+
+/* ==========================
+      FLASH MESSAGE
+========================== */
+
+.error{
+
+    background:#ff4d4d;
+
+    color:white;
+
+    padding:12px 22px;
+
+    border-radius:15px;
+
+    margin-bottom:20px;
+
+    font-size:18px;
+
+    font-weight:bold;
+
+    animation:fadeIn .5s ease;
+}
+
+/* ==========================
+         ANIMATIONS
+========================== */
+
+@keyframes float{
+
+    0%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-12px);
+    }
+
+    100%{
+        transform:translateY(0);
+    }
+}
+
+@keyframes rainbow{
+
+    from{
+        background-position:0%;
+    }
+
+    to{
+        background-position:300%;
+    }
+}
+
+@keyframes fadeIn{
+
+    from{
+
+        opacity:0;
+
+        transform:scale(.96);
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:scale(1);
+    }
+}

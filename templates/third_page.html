@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter III — Our Story</title>
+
+    <!-- Vintage Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@500;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/third_page.css') }}">
+</head>
+
+<body>
+
+<!-- Ambient Backdrops -->
+<div class="candlelight-overlay"></div>
+<canvas id="ambient-canvas"></canvas>
+
+<!-- Fairy Lights Wire -->
+<ul class="fairy-lights" id="fairy-lights"></ul>
+
+<!-- Audio Background (Soft Acoustic Romantic Melody) -->
+<audio id="bg-music" loop preload="auto">
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73561.mp3?filename=romantic-acoustic-guitar-10222.mp3" type="audio/mpeg">
+</audio>
+
+<div class="torn-paper-wrapper">
+    <div class="a4 parchment-paper" id="paper">
+
+        <!-- Stamp -->
+        <div class="vintage-stamp">
+            <span class="stamp-inner">CHAPTER III</span>
+        </div>
+
+        <!-- Music Control Widget -->
+        <div class="gramophone-widget" id="music-toggle" title="Click to Play/Pause Music">
+            <div class="vinyl-record" id="vinyl"></div>
+            <div class="music-info">
+                <span class="music-icon">🎵</span>
+                <span class="music-text">Play Our Song</span>
+            </div>
+        </div>
+
+        <!-- Header -->
+        <header class="header">
+            <span class="vintage-subtitle-top">The Memory Journal</span>
+            <h1 class="title">Captured Moments with <span class="highlight">Yogi</span></h1>
+            <p class="quote">“We didn't realize we were making memories, we just knew we were having fun.”</p>
+        </header>
+
+        <!-- Dynamic Photo Gallery (Scrapbook Layout) -->
+        <section class="scrapbook-gallery">
+            <div class="polaroid-card tilt-left">
+                <div class="tape-strip"></div>
+                <div class="photo-frame">
+                    <img src="{{ url_for('static', filename='images/memory1.jpeg') }}" alt="Memory 1">
+                </div>
+                <p class="caption">The Beginning ✨</p>
+            </div>
+
+            <div class="polaroid-card tilt-right">
+                <div class="tape-strip center-tape"></div>
+                <div class="photo-frame">
+                    <img src="{{ url_for('static', filename='images/memory2.jpeg') }}" alt="Memory 2">
+                </div>
+                <p class="caption">Unstoppable Laughter </p>
+            </div>
+
+            <div class="polaroid-card tilt-straight">
+                <div class="tape-strip"></div>
+                <div class="photo-frame">
+                    <img src="{{ url_for('static', filename='images/memory3.jpeg') }}" alt="Memory 3">
+                </div>
+                <p class="caption">Forever fav ❤️</p>
+            </div>
+        </section>
+
+        <!-- Interactive Envelope Wish Cards Section -->
+        <section class="wishes-section">
+            <h3 class="section-title">✦ Tap an Envelope to Open a Secret Wish ✦</h3>
+            <div class="envelopes-grid">
+                
+                <!-- Envelope 1 -->
+                <div class="envelope-card" onclick="flipEnvelope(this)">
+                    <div class="envelope-inner">
+                        <div class="envelope-front">
+                            <div class="wax-seal">💌</div>
+                            <p class="envelope-label">For Your Success</p>
+                        </div>
+                        <div class="envelope-back">
+                            <p>May your tough phase end soon, achieve everything you use to tell me! Keep shining brightly, you deserve a lot more than you will ever know 🚀</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Envelope 2 -->
+                <div class="envelope-card" onclick="flipEnvelope(this)">
+                    <div class="envelope-inner">
+                        <div class="envelope-front">
+                            <div class="wax-seal">🕯️</div>
+                            <p class="envelope-label">For Your Joy</p>
+                        </div>
+                        <div class="envelope-back">
+                            <p>May your days be filled with endless belly laughs and good coffee , maggie (made by yourself, kyuki humse nhi bnega)! ☕✨</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Envelope 3 -->
+                <div class="envelope-card" onclick="flipEnvelope(this)">
+                    <div class="envelope-inner">
+                        <div class="envelope-front">
+                            <div class="wax-seal">🥀</div>
+                            <p class="envelope-label">For Our Bond</p>
+                        </div>
+                        <div class="envelope-back">
+                            <p>No matter where life takes us, you will always be stuck with me! ❤️</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Closing Note -->
+        <footer class="footer-note">
+            <p class="handwritten-closing">Here's to a lifetime of more chapters...</p>
+            <p class="signature-line">With all my love, <span>Chhavi</span></p>
+        </footer>
+
+        <!-- Navigation Buttons -->
+        <nav class="vintage-nav-container">
+            <a href="{{ url_for('second_page') }}" class="vintage-btn">← Previous Chapter</a>
+            <a href="{{ url_for('fourth_page') }}" class="vintage-btn">Next Chapter →</a>
+        </nav>
+
+    </div>
+</div>
+
+<script src="{{ url_for('static', filename='js/third_page.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,161 @@
+:root {
+    --paper-bg: rgba(18, 11, 31, 0.78);
+    --text-primary: #f2e9fc;
+    --text-secondary: #d8b4fe;
+    --cosmic-purple: #9d4edd;
+    --cosmic-magenta: #e0aaff;
+    --starlight-gold: #fde047;
+    --crimson-accent: #f43f5e;
+    
+    --font-heading: 'Cinzel', serif;
+    --font-body: 'Playfair Display', serif;
+    --font-mono: 'Courier Prime', monospace;
+    --font-script: 'Alex Brush', cursive;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    min-height: 100vh;
+    background-color: #030008;
+    font-family: var(--font-body);
+    color: var(--text-primary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 15px;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* 1. LAYERED CANVAS & NEBULA BACKGROUNDS */
+#galaxy-canvas, #particle-canvas {
+    position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+    pointer-events: none;
+}
+#galaxy-canvas { z-index: 0; }
+#particle-canvas { z-index: 8; }
+
+.nebula-glow {
+    position: fixed; width: 600px; height: 600px; border-radius: 50%;
+    filter: blur(140px); pointer-events: none; z-index: 1; opacity: 0.4;
+    animation: nebulaPulse 12s ease-in-out infinite alternate;
+}
+.nebula-1 { top: -100px; left: -100px; background: #7b2cbf; }
+.nebula-2 { bottom: -100px; right: -100px; background: #c77dff; animation-delay: 6s; }
+
+@keyframes nebulaPulse {
+    0% { transform: scale(1) rotate(0deg); opacity: 0.3; }
+    100% { transform: scale(1.3) rotate(20deg); opacity: 0.6; }
+}
+
+/* 2. COSMIC PARCHMENT CARD */
+.torn-paper-wrapper {
+    position: relative; z-index: 5;
+    filter: drop-shadow(0 25px 50px rgba(0,0,0,0.95));
+}
+
+.cosmic-parchment {
+    width: 100%; max-width: 860px; min-height: 1150px;
+    background: var(--paper-bg);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(224, 170, 255, 0.25);
+    padding: 50px;
+    display: flex; flex-direction: column; justify-content: space-between;
+    position: relative; overflow: hidden;
+    border-radius: 12px;
+    box-shadow: inset 0 0 40px rgba(157, 78, 221, 0.2);
+}
+
+.vintage-stamp {
+    position: absolute; top: 25px; right: 35px;
+    border: 1px solid var(--cosmic-magenta); padding: 5px 14px;
+    transform: rotate(3deg); background: rgba(157, 78, 221, 0.15);
+    box-shadow: 0 0 10px rgba(224, 170, 255, 0.3);
+}
+.stamp-inner { font-family: var(--font-heading); font-size: 0.75rem; letter-spacing: 2px; color: var(--cosmic-magenta); font-weight: 700; }
+
+/* 3. HEADER */
+.header { text-align: center; margin-top: 10px; margin-bottom: 25px; }
+.vintage-subtitle-top { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 3px; color: var(--text-secondary); text-transform: uppercase; }
+.title { font-family: var(--font-heading); font-size: 2.5rem; margin: 8px 0; color: #ffffff; text-shadow: 0 0 20px rgba(224, 170, 255, 0.5); }
+.title .highlight { color: var(--cosmic-magenta); font-style: italic; }
+.quote { font-style: italic; color: var(--text-secondary); font-size: 0.95rem; }
+
+/* 4. POEM SECTION & SOFT GLOW PARAGRAPHS */
+.galaxy-poem-section {
+    display: flex; flex-direction: column; align-items: center;
+    margin: 20px 0; min-height: 420px; justify-content: center;
+    position: relative;
+}
+
+.poem-card {
+    width: 100%; max-width: 680px;
+    background: rgba(10, 5, 20, 0.6);
+    border: 1px solid rgba(224, 170, 255, 0.15);
+    border-radius: 12px; padding: 40px 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    text-align: center; position: relative; z-index: 6;
+}
+
+.poem-container {
+    display: flex; flex-direction: column; gap: 32px;
+}
+
+.glowing-paragraph {
+    opacity: 0; transform: translateY(20px) scale(0.98);
+    transition: opacity 2s ease, transform 2s ease, text-shadow 2s ease;
+    font-size: 1.15rem; line-height: 1.9; color: var(--text-primary); font-weight: 400;
+}
+
+.glowing-paragraph.revealed {
+    opacity: 1; transform: translateY(0) scale(1);
+    text-shadow: 0 0 15px rgba(224, 170, 255, 0.6), 0 0 30px rgba(157, 78, 221, 0.4);
+}
+
+.final-para {
+    font-family: var(--font-heading); font-size: 1.3rem; font-weight: 700;
+    margin-top: 10px; color: var(--starlight-gold);
+}
+
+.final-para.revealed {
+    text-shadow: 0 0 20px rgba(253, 224, 71, 0.8), 0 0 35px rgba(244, 63, 94, 0.5);
+}
+
+/* 5. BUTTON CONTROL */
+.action-controls { margin-top: 35px; }
+.vintage-action-btn {
+    font-family: var(--font-heading); font-size: 0.9rem; font-weight: 700;
+    color: #fff; background: linear-gradient(135deg, #7b2cbf, #9d4edd); border: none;
+    padding: 14px 32px; border-radius: 30px; cursor: pointer;
+    box-shadow: 0 0 20px rgba(157, 78, 221, 0.6); transition: all 0.4s ease;
+    letter-spacing: 1.5px;
+}
+.vintage-action-btn:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 0 30px rgba(224, 170, 255, 0.9);
+}
+
+/* 6. FOOTER & NAVIGATION */
+.footer-note { text-align: center; margin-top: 20px; }
+.handwritten-closing { font-family: var(--font-script); font-size: 2.4rem; color: var(--cosmic-magenta); text-shadow: 0 0 10px rgba(224, 170, 255, 0.4); }
+.signature-line { font-family: var(--font-heading); font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; color: var(--text-secondary); }
+.signature-line span { color: var(--starlight-gold); font-weight: 700; }
+
+.vintage-nav-container {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-top: 20px; padding-top: 15px; border-top: 1px dashed rgba(224, 170, 255, 0.3);
+}
+.vintage-btn {
+    font-family: var(--font-heading); font-size: 0.85rem; font-weight: 700;
+    color: var(--text-secondary); text-decoration: none; padding: 10px 22px;
+    border: 1px solid var(--cosmic-purple); background: rgba(157, 78, 221, 0.1);
+    border-radius: 20px; transition: all 0.3s ease;
+}
+.vintage-btn:hover { background: var(--cosmic-purple); color: #ffffff; box-shadow: 0 0 15px var(--cosmic-purple); }
+
+@media (max-width: 768px) {
+    .cosmic-parchment { padding: 30px 20px; }
+    .glowing-paragraph { font-size: 0.95rem; }
+    .final-para { font-size: 1.05rem; }
+}

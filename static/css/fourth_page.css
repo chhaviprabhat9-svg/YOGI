@@ -1,0 +1,255 @@
+:root {
+    --paper-bg: #f7f1e3;
+    --ink-dark: #1f1715;
+    --ink-sepia: #5c4033;
+    --crimson-accent: #8b0000;
+    --rose-gold: #c58373;
+    --gold-accent: #d4af37;
+    --sticky-yellow: #fef3c7;
+    --agent-green: #00ff66;
+    
+    --font-heading: 'Cinzel', serif;
+    --font-body: 'Playfair Display', serif;
+    --font-mono: 'Courier Prime', monospace;
+    --font-script: 'Alex Brush', cursive;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    min-height: 100vh;
+    background-color: #070606;
+    font-family: var(--font-body);
+    color: var(--ink-dark);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 15px;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* RADAR SWEEP EFFECT */
+.radar-sweep {
+    position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+    background: radial-gradient(circle, rgba(0,255,102,0.02) 0%, transparent 70%);
+    pointer-events: none; z-index: 1;
+}
+
+/* 1. AMBIENT CANDLELIGHT & SPARKLERS */
+.candlelight-overlay {
+    position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+    background: radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.12) 0%, rgba(0,0,0,0.95) 85%);
+    pointer-events: none; z-index: 0;
+}
+
+#sparkler-canvas {
+    position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+    pointer-events: none; z-index: 1;
+}
+
+/* 2. BURNING SIDE CANDLES */
+.side-candle {
+    position: fixed; bottom: 30px; width: 24px; height: 120px;
+    background: linear-gradient(to right, #e2d2be, #fff8eb, #c2b29e);
+    border-radius: 4px; z-index: 10; box-shadow: 0 0 20px rgba(0,0,0,0.8);
+}
+.left-candle { left: 40px; }
+.right-candle { right: 40px; }
+.flame {
+    position: absolute; top: -22px; left: 50%; transform: translateX(-50%);
+    width: 14px; height: 22px; background: #ff9d00;
+    border-radius: 50% 50% 20% 20%;
+    box-shadow: 0 0 15px #ff9d00, 0 0 30px #ff5252;
+    animation: flameBurn 0.1s infinite alternate;
+}
+@keyframes flameBurn {
+    0% { transform: translateX(-50%) scale(1) rotate(-2deg); }
+    100% { transform: translateX(-50%) scale(1.1) rotate(2deg); }
+}
+
+/* 3. FLOATING BALLOONS */
+.balloon-container {
+    position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+    pointer-events: none; z-index: 2; overflow: hidden;
+}
+.balloon {
+    position: absolute; bottom: -100px; width: 45px; height: 55px;
+    border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+    opacity: 0.4; animation: floatUp 12s linear infinite;
+}
+.balloon::after {
+    content: ''; position: absolute; bottom: -12px; left: 50%;
+    width: 1px; height: 15px; background: rgba(255,255,255,0.5);
+}
+@keyframes floatUp {
+    0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+    10% { opacity: 0.4; }
+    100% { transform: translateY(-120vh) rotate(15deg); opacity: 0; }
+}
+
+/* 4. TORN A4 PARCHMENT */
+.torn-paper-wrapper {
+    position: relative; z-index: 5;
+    filter: drop-shadow(0 20px 30px rgba(0,0,0,0.9));
+}
+
+.a4 {
+    width: 100%; max-width: 840px; min-height: 1220px;
+    background: var(--paper-bg);
+    background-image: 
+        radial-gradient(ellipse at center, rgba(255,255,255,0.4) 0%, rgba(230, 210, 180, 0.8) 100%),
+        radial-gradient(circle at 10% 10%, rgba(92, 64, 51, 0.15) 0%, transparent 50%);
+    padding: 45px 50px;
+    display: flex; flex-direction: column; justify-content: space-between;
+    position: relative; overflow: hidden;
+    clip-path: polygon(
+        0% 2%, 2% 0%, 5% 3%, 8% 1%, 12% 4%, 16% 0%, 20% 3%, 25% 1%, 29% 4%, 34% 0%, 39% 3%, 44% 1%, 49% 4%, 53% 0%, 58% 3%, 63% 1%, 67% 4%, 72% 0%, 76% 3%, 81% 1%, 86% 4%, 90% 0%, 95% 3%, 98% 1%, 100% 2%, 
+        100% 98%, 98% 100%, 95% 97%, 90% 100%, 86% 96%, 81% 99%, 76% 97%, 72% 100%, 67% 96%, 63% 99%, 58% 97%, 53% 100%, 49% 96%, 44% 99%, 39% 97%, 34% 100%, 29% 96%, 25% 99%, 20% 97%, 16% 100%, 12% 96%, 8% 99%, 5% 97%, 2% 100%, 0% 98%
+    );
+}
+
+.a4::after {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    box-shadow: inset 0 0 50px rgba(92, 64, 51, 0.6); pointer-events: none; z-index: 5;
+}
+
+/* Background Watermark */
+.bg-watermark {
+    position: absolute; top: 40%; left: 50%;
+    transform: translate(-50%, -50%) rotate(-30deg);
+    font-family: var(--font-heading); font-size: 3.2rem; font-weight: 900;
+    color: rgba(139, 0, 0, 0.05); pointer-events: none; white-space: nowrap; z-index: 1;
+}
+
+/* 5. CONFIDENTIAL STAMPS & TAGS */
+.confidential-stamp-group {
+    position: absolute; top: 25px; right: 30px; z-index: 10;
+    display: flex; flex-direction: column; align-items: flex-end; gap: 5px;
+}
+
+.red-stamp {
+    border: 3px double var(--crimson-accent); padding: 5px 12px;
+    transform: rotate(6deg); background: rgba(139, 0, 0, 0.06); text-align: center;
+}
+.stamp-main {
+    display: block; font-family: var(--font-heading); font-size: 1.1rem;
+    font-weight: 900; letter-spacing: 2px; color: var(--crimson-accent);
+}
+.stamp-sub {
+    display: block; font-family: var(--font-mono); font-size: 0.55rem;
+    letter-spacing: 1px; color: var(--ink-sepia); font-weight: 700;
+}
+
+.clearance-tag {
+    background: var(--ink-dark); color: var(--agent-green); font-family: var(--font-mono);
+    font-size: 0.6rem; padding: 2px 8px; letter-spacing: 1px; transform: rotate(-2deg);
+    border: 1px solid var(--agent-green);
+}
+
+.file-meta-tag {
+    position: absolute; top: 25px; left: 35px; z-index: 10;
+    font-family: var(--font-mono); font-size: 0.62rem; color: var(--ink-sepia);
+    display: flex; flex-direction: column; gap: 2px; border-left: 2px solid var(--crimson-accent); padding-left: 8px;
+}
+
+/* 6. HEADER & BIOMETRIC SCANNER */
+.header { text-align: center; margin-top: 35px; margin-bottom: 20px; z-index: 6; }
+.classified-badge {
+    font-family: var(--font-mono); font-size: 0.7rem; color: var(--crimson-accent);
+    letter-spacing: 2px; font-weight: 700; margin-bottom: 4px;
+}
+.title { font-family: var(--font-heading); font-size: 2.2rem; margin: 4px 0; }
+.title .highlight { color: var(--crimson-accent); font-style: italic; }
+
+.fingerprint-box {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: rgba(31, 23, 21, 0.08); border: 1px dashed var(--crimson-accent);
+    padding: 8px 16px; border-radius: 4px; cursor: pointer; margin-top: 10px;
+    transition: all 0.3s ease;
+}
+.fingerprint-box:hover { background: rgba(139, 0, 0, 0.1); transform: scale(1.02); }
+.fp-icon { font-size: 1.3rem; }
+.fp-status { font-family: var(--font-mono); font-size: 0.7rem; font-weight: 700; color: var(--crimson-accent); }
+
+/* 7. STICKY NOTES & SCRATCH CARDS GRID */
+.sticky-notes-grid {
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;
+    margin: 15px 0; z-index: 10; position: relative;
+}
+
+.sticky-note-wrapper {
+    width: 220px; height: 180px; background: var(--sticky-yellow);
+    box-shadow: 0 8px 18px rgba(0,0,0,0.25); position: relative;
+    padding: 18px 12px 12px; border-radius: 2px; transition: transform 0.3s ease;
+}
+
+.tilt-1 { transform: rotate(-4deg); }
+.tilt-2 { transform: rotate(3deg); }
+.tilt-3 { transform: rotate(-3deg); }
+.tilt-4 { transform: rotate(5deg); }
+.tilt-5 { transform: rotate(-1deg); }
+
+.sticky-note-wrapper:hover { transform: scale(1.05) rotate(0deg); z-index: 15; }
+
+.tape-tag {
+    position: absolute; top: -8px; right: 10px; background: var(--crimson-accent);
+    color: #fff; font-family: var(--font-mono); font-size: 0.55rem; padding: 2px 6px;
+    letter-spacing: 1px; font-weight: 700; z-index: 4; box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+.ultra-classified { background: #000; color: var(--gold-accent); }
+
+.pin { position: absolute; top: -10px; left: 50%; transform: translateX(-50%); font-size: 1.2rem; z-index: 3; }
+
+.secret-text {
+    width: 100%; height: 100%; display: flex; flex-direction: column;
+    justify-content: center; align-items: center; text-align: center;
+    color: var(--ink-dark); z-index: 1;
+}
+.secret-text p { font-family: var(--font-mono); font-size: 0.72rem; color: var(--crimson-accent); font-weight: 700; margin-bottom: 5px; letter-spacing: 1px; }
+.secret-text span { font-family: var(--font-body); font-size: 0.85rem; line-height: 1.3; }
+
+/* Redacted text bar before reveal */
+.redacted { background: #000; color: #000; transition: all 0.5s ease; border-radius: 2px; }
+
+/* Scratch Overlay Canvas */
+.scratch-canvas {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    border-radius: 2px; cursor: pointer; z-index: 2;
+}
+
+/* 8. FOOTER */
+.footer-note { text-align: center; z-index: 6; margin-top: 10px; position: relative; }
+.declassified-stamp {
+    font-family: var(--font-mono); font-size: 0.65rem; color: var(--crimson-accent);
+    border: 1px dashed var(--crimson-accent); display: inline-block; padding: 2px 10px;
+    letter-spacing: 2px; transform: rotate(-3deg); margin-bottom: 6px; font-weight: 700;
+}
+.handwritten-closing { font-family: var(--font-script); font-size: 2rem; color: var(--ink-sepia); }
+.signature-line { font-family: var(--font-heading); font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; }
+.signature-line span { color: var(--crimson-accent); font-weight: 700; }
+
+/* NAVIGATION BUTTONS */
+.vintage-nav-container {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-top: 15px; padding-top: 12px; border-top: 1px dashed var(--rose-gold);
+    z-index: 10; position: relative;
+}
+.vintage-btn {
+    font-family: var(--font-heading); font-size: 0.85rem; font-weight: 700;
+    color: var(--ink-sepia); text-decoration: none; padding: 8px 18px;
+    border: 1px solid var(--rose-gold); background: rgba(255, 248, 235, 0.6);
+    border-radius: 4px; transition: all 0.3s ease; letter-spacing: 1px;
+}
+.vintage-btn:hover {
+    background: var(--crimson-accent); color: #fff8eb;
+    border-color: var(--crimson-accent); transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+    .a4 { padding: 35px 20px; }
+    .sticky-note-wrapper { width: 90%; height: 160px; }
+    .side-candle { display: none; }
+    .confidential-stamp-group { position: relative; top: 0; right: 0; align-items: center; margin-bottom: 10px; }
+    .file-meta-tag { position: relative; top: 0; left: 0; margin-bottom: 15px; }
+}

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Final Scene — Eighth Page</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Plus+Jakarta+Sans:wght@300;400;600&family=Sacramento&display=swap" rel="stylesheet">
+
+    <!-- Canvas Confetti Library -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/eighth_page.css') }}">
+</head>
+<body>
+
+<!-- Ambient Ambient Starfield Background -->
+<canvas id="stars-canvas"></canvas>
+
+<!-- TOP NAVIGATION BAR -->
+<div class="top-nav">
+    <a href="{{ url_for('seventh_page') }}" class="nav-btn back-btn">
+        <span>←</span> Back
+    </a>
+</div>
+
+<!-- CINEMATIC VIGNETTE OVERLAY -->
+<div class="vignette"></div>
+
+<main class="cinema-stage">
+
+    <!-- SCROLLING CREDITS CONTAINER -->
+    <div class="credits-wrapper" id="credits-wrapper">
+        <div class="credits-content">
+
+            <!-- MOVIE BANNER / LOGO -->
+            <div class="movie-logo">
+                <span class="film-badge">A LIFETIME PRODUCTION</span>
+                <h1 class="movie-title">THE VIJAY CHAPTER</h1>
+                <div class="divider-line"></div>
+            </div>
+
+            <!-- MAIN CREDITS SECTION -->
+            <div class="credit-block">
+                <span class="role">DIRECTED BY</span>
+                <p class="name special-heart">Someone who cares deeply <span class="heart-pulse">❤️</span></p>
+            </div>
+
+            <div class="credit-block">
+                <span class="role">LEAD ACTOR</span>
+                <p class="name star-glow">Vijay</p>
+            </div>
+
+            <div class="credit-block">
+                <span class="role">SPECIAL THANKS TO</span>
+                <ul class="thanks-list">
+                    <li><span class="star-icon">✨</span> His Smile</li>
+                    <li><span class="star-icon">✨</span> His Kindness</li>
+                    <li><span class="star-icon">✨</span> His Patience</li>
+                    <li><span class="star-icon">✨</span> His Laughter</li>
+                </ul>
+            </div>
+
+            <!-- TEASER / COMING SOON SECTION -->
+            <div class="coming-soon-card">
+                <span class="teaser-tag">NEXT SEASON</span>
+                <h2>COMING SOON</h2>
+                <p class="teaser-text">Another year of wonderful memories...</p>
+            </div>
+
+            <!-- FINAL SIGN OFF -->
+            <div class="final-signoff">
+                <p class="script-quote">"To the boy who makes the universe a little brighter just by being in it."</p>
+                <p class="the-end">THE END</p>
+                <p class="subtitle-end">(...or just the beginning)</p>
+            </div>
+
+            <!-- REPLAY / HOME ACTION BUTTONS -->
+            <div class="action-dock">
+                <button class="action-btn replay-btn" onclick="restartCredits()">
+                    <span>🔄</span> Replay Credits
+                </button>
+                <a href="{{ url_for('first_page') }}" class="action-btn home-btn">
+                    <span>📖</span> Read From Start
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+</main>
+
+<script src="{{ url_for('static', filename='js/eighth_page.js') }}"></script>
+</body>
+</html>

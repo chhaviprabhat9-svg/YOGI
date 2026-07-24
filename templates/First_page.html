@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Letter to Yogi</title>
+
+    <!-- Google Vintage/Romantic Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@500;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/first_page.css') }}">
+    <script src="{{ url_for('static', filename='js/first_page.js') }}"></script>
+</head>
+<body>
+
+<!-- Flickering Candlelight Backdrop -->
+<div class="candlelight-overlay"></div>
+
+<!-- Floating Embers Canvas -->
+<canvas id="ambient-canvas"></canvas>
+
+<!-- Glowing Fairy Lights -->
+<ul class="fairy-lights" id="fairy-lights">
+    <!-- JS will populate the bulbs dynamically for randomness -->
+</ul>
+
+<div class="torn-paper-wrapper">
+    <div class="a4 parchment-paper" id="paper">
+
+        <!-- Decorative Stamp -->
+        <div class="vintage-stamp">
+            <span class="stamp-inner">CHAPTER II</span>
+        </div>
+
+        <header class="header">
+            <span class="vintage-subtitle-top">A Celebration of You</span>
+            <h1 class="title">
+                Happy Birthday, <span class="highlight">Yogi</span> <span class="ghost-icon">👻</span>
+            </h1>
+            <p class="quote">
+                “Every friendship has a story, and ours is my favourite.”
+            </p>
+        </header>
+
+        <!-- Polaroid Style Photo Frame -->
+        <div class="photo-container">
+            <div class="polaroid-frame" id="polaroid">
+                <div class="tape-strip top-tape"></div>
+                <div class="photo-wrapper">
+                    <img src="{{ url_for('static', filename='images/yogi.png') }}" alt="Friend Memory">
+                </div>
+                <div class="polaroid-caption">Best Memories • 2026</div>
+            </div>
+        </div>
+
+        <!-- Letter Body -->
+        <main class="letter-body">
+            <h2 class="salutation">To my special one ,</h2>
+            <p class="letter-p">
+                Happy Birthday to you, you don't know how badly I wanted to be with you tonight. 
+                Let me first remind you, that you are not just a person I love to have but one of the most remarkable souls in this universe. 
+                Your kindness, laughter, and endless support have woven countless unforgettable 
+                moments in my life.
+            </p>
+            <p class="letter-p">
+                Thank you for being the kindest person who always stands faithfully beside me, 
+                celebrates every small victory, and makes even ordinary days feel magical. 
+                I cherish every chapter of the memory book we've written together.
+            </p>
+            <p class="letter-p">
+                On your special day, I wish you everlasting happiness, soaring success, 
+                boundless health, and beautiful new adventures. May every dream you harbor come true, 
+                and may this coming year bring you everything your heart desires.
+                English sayad thoda jyada hogya hai na?....Next pages pe aajao, hindi hi hai, kyuki feel toh hindi mai  hi aata hai na..tbtk ke liye..
+                "तुम हो तो सुबह नई है,
+                तुम हो तो शामें हसीं हैं।
+                एक दुनिया सपनों सी है,
+                तुम हो तो इस पे यक़ीं है।"
+            </p>
+
+            <div class="signature-section">
+                <p class="signature-tag">Yours in chaos & cheer,</p>
+                <p class="signature-name">Chhavi</p>
+                <p class="signature-subtext">❤️ Your headache, forever ❤️</p>
+            </div>
+        </main>
+
+        <!-- Interactive Wax Seal CTA -->
+        <div class="button-container">
+            <a href="{{ url_for('second_page') }}" class="wax-seal-btn" id="next-page-btn">
+                <span class="seal-icon">📜</span>
+                <span class="btn-text">Turn the Page</span>
+                <span class="arrow">⟶</span>
+            </a>
+        </div>
+
+    </div>
+</div>
+
+<!-- JS File -->
+<script src="{{ url_for('static', filename='js/first_page.js') }}"></script>
+</body>
+</html>

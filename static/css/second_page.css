@@ -1,0 +1,499 @@
+/* ==========================================================================
+   VINTAGE SCRAPBOOK STYLESHEET (second_page.css)
+   ========================================================================== */
+
+/* --- 1. Global Reset & Setup --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #2b2118;
+    background-image: radial-gradient(#3a2d21 1px, transparent 0);
+    background-size: 24px 24px;
+    color: #4a3728;
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* --- 2. Background Ambient Effects --- */
+.glitter {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: radial-gradient(rgba(255, 223, 150, 0.15) 1px, transparent 0);
+    background-size: 30px 30px;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Vintage Coffee Stains */
+.coffee1, .coffee2 {
+    position: absolute;
+    border-radius: 50%;
+    border: 18px solid rgba(112, 66, 20, 0.08);
+    filter: blur(4px);
+    pointer-events: none;
+    z-index: 2;
+}
+
+.coffee1 {
+    width: 180px;
+    height: 180px;
+    top: 50px;
+    left: 30px;
+    transform: rotate(-15deg);
+}
+
+.coffee2 {
+    width: 240px;
+    height: 230px;
+    bottom: 120px;
+    right: 40px;
+    transform: rotate(20deg);
+}
+
+/* Film Strip Borders */
+.film-left, .film-right {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 45px;
+    background-color: #1a1410;
+    background-image: repeating-linear-gradient(
+        to bottom,
+        transparent,
+        transparent 15px,
+        #f4ebd9 15px,
+        #f4ebd9 30px,
+        transparent 30px,
+        transparent 45px
+    );
+    border-left: 8px solid #1a1410;
+    border-right: 8px solid #1a1410;
+    opacity: 0.3;
+    z-index: 1;
+}
+
+.film-left { left: 10px; }
+.film-right { right: 10px; }
+
+/* Fairy Lights Ambient Glow */
+.fairy-lights {
+    position: absolute;
+    top: 15px;
+    left: 5%;
+    width: 90%;
+    display: flex;
+    justify-content: space-around;
+    z-index: 10;
+}
+
+.fairy-lights span {
+    width: 12px;
+    height: 12px;
+    background-color: #ffdc73;
+    border-radius: 50%;
+    box-shadow: 0 0 12px #ffc107, 0 0 20px #ffc107;
+    animation: twinkle 2s infinite alternate ease-in-out;
+}
+
+.fairy-lights span:nth-child(even) {
+    animation-delay: 0.8s;
+    background-color: #ffb366;
+}
+
+@keyframes twinkle {
+    0% { opacity: 0.3; transform: scale(0.8); }
+    100% { opacity: 1; transform: scale(1.2); }
+}
+
+/* --- 3. Main Scrapbook Canvas --- */
+.scrapbook {
+    position: relative;
+    max-width: 950px;
+    width: 100%;
+    background: #f4ebd9; /* Aged paper base */
+    background-image: linear-gradient(to bottom, rgba(255,255,255,0.4), rgba(0,0,0,0.05));
+    border: 1px solid #d4c3a3;
+    padding: 60px 50px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 0 80px rgba(139, 90, 43, 0.2);
+    border-radius: 4px;
+    margin-top: 20px;
+    z-index: 5;
+}
+
+/* Decorative Ornate Corners */
+.corner {
+    position: absolute;
+    font-size: 28px;
+    color: #8c6d46;
+    line-height: 1;
+    user-select: none;
+}
+
+.tl { top: 15px; left: 20px; }
+.tr { top: 15px; right: 20px; }
+.bl { bottom: 15px; left: 20px; }
+.br { bottom: 15px; right: 20px; }
+
+/* --- 4. Headers & Typography --- */
+.title {
+    font-family: 'Cinzel', serif;
+    font-size: 2.8rem;
+    color: #4a2c11;
+    text-align: center;
+    letter-spacing: 3px;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8), 2px 2px 4px rgba(0, 0, 0, 0.15);
+    margin-bottom: 5px;
+}
+
+.subtitle {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.5rem;
+    color: #7a5230;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.note {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.6rem;
+    background: #fffdf5;
+    padding: 15px 25px;
+    border-left: 4px solid #b5835a;
+    box-shadow: 3px 3px 10px rgba(0,0,0,0.06);
+    width: fit-content;
+    margin: 0 auto 40px auto;
+    transform: rotate(-1.5deg);
+    color: #3d2b1f;
+}
+
+/* --- 5. Stickers & Leaves (Decorative Elements) --- */
+.sticker, .leaf, .flower {
+    position: absolute;
+    user-select: none;
+    filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.2));
+    transition: transform 0.3s ease;
+    z-index: 6;
+}
+
+.sticker:hover, .leaf:hover, .flower:hover {
+    transform: scale(1.2) rotate(8deg);
+}
+
+.compass { font-size: 2.2rem; top: 40px; right: 50px; transform: rotate(12deg); }
+.camera  { font-size: 2.2rem; top: 180px; left: 30px; transform: rotate(-10deg); }
+.ticket  { font-size: 2rem; bottom: 220px; left: 40px; transform: rotate(15deg); }
+.star    { font-size: 1.8rem; top: 110px; right: 80px; }
+
+.leaf1   { font-size: 2rem; top: 380px; left: 20px; transform: rotate(-25deg); }
+.leaf2   { font-size: 2rem; bottom: 350px; right: 30px; transform: rotate(40deg); }
+
+.flower1 { font-size: 2.2rem; top: 500px; right: 25px; }
+.flower2 { font-size: 2.2rem; bottom: 150px; left: 30px; }
+
+/* --- 6. Photo Grid / Polaroid Styling --- */
+.photo-area {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin: 40px 0;
+}
+
+.polaroid {
+    background: #ffffff;
+    padding: 15px 15px 25px 15px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.15), 0 0 0 1px rgba(0,0,0,0.03);
+    width: 240px;
+    text-align: center;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    cursor: pointer;
+}
+
+/* Tapes effect on top of polaroids */
+.polaroid::before {
+    content: '';
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70px;
+    height: 22px;
+    background-color: rgba(243, 230, 200, 0.7);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    backdrop-filter: blur(1px);
+}
+
+.polaroid img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    filter: sepia(0.25) contrast(1.05) brightness(0.95);
+    border: 1px solid #eee;
+}
+
+.polaroid h3 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.5rem;
+    color: #2c1d11;
+    margin-top: 12px;
+}
+
+.polaroid p {
+    font-size: 0.85rem;
+    color: #776555;
+    margin-top: 2px;
+}
+
+/* Rotations for organic, scattered look */
+.p1 { transform: rotate(-4deg); }
+.p2 { transform: rotate(3deg); }
+.p3 { transform: rotate(-2deg); }
+.p4 { transform: rotate(5deg); }
+.p5 { transform: rotate(-3deg); }
+
+.polaroid:hover {
+    transform: scale(1.08) rotate(0deg) translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.25);
+    z-index: 10;
+}
+
+.polaroid:hover img {
+    filter: sepia(0);
+}
+
+/* --- 7. Memory Quote Card --- */
+.quote-card {
+    background: #eae0cf;
+    border: 2px dashed #a89275;
+    padding: 30px;
+    margin: 50px auto;
+    max-width: 650px;
+    text-align: center;
+    border-radius: 4px;
+    position: relative;
+}
+
+.quote-card h2 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.6rem;
+    color: #5c3e21;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+}
+
+.quote-card p {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.4rem;
+    line-height: 1.6;
+    color: #3b2816;
+}
+
+/* --- 8. Envelope & Interactive Letter --- */
+.envelope {
+    position: relative;
+    width: 320px;
+    height: 200px;
+    background: #d9c5ab;
+    margin: 60px auto 40px auto;
+    border-radius: 4px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: margin-bottom 0.4s ease;
+}
+
+.envelope .flap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 160px solid transparent;
+    border-right: 160px solid transparent;
+    border-top: 110px solid #c7b195;
+    transform-origin: top;
+    transition: transform 0.4s ease;
+    z-index: 3;
+}
+
+.wax-seal {
+    position: absolute;
+    top: 85px;
+    z-index: 4;
+    width: 45px;
+    height: 45px;
+    background: #8b1e1e;
+    border-radius: 50%;
+    color: #fce8e8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.3), inset 0 0 4px rgba(0,0,0,0.4);
+    transition: transform 0.3s ease;
+}
+
+.letter {
+    position: absolute;
+    bottom: 10px;
+    width: 90%;
+    height: 180px;
+    background: #fffcf5;
+    padding: 20px;
+    border: 1px solid #e0d5c1;
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.05);
+    transition: all 0.5s ease;
+    z-index: 2;
+    overflow: hidden;
+    opacity: 0.8;
+}
+
+.letter h2 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.2rem;
+    color: #8b1e1e;
+    margin-bottom: 8px;
+    text-align: center;
+}
+
+.letter p {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.1rem;
+    line-height: 1.4;
+    color: #2b1a0e;
+    text-align: center;
+}
+
+/* Hover reveal effect for Envelope */
+.envelope:hover .flap {
+    transform: rotateX(180deg);
+    z-index: 1;
+}
+
+.envelope:hover .letter {
+    transform: translateY(-120px);
+    height: auto;
+    opacity: 1;
+    z-index: 5;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.envelope:hover .wax-seal {
+    opacity: 0;
+}
+
+/* --- 9. Stamp & Footer --- */
+.stamp {
+    position: absolute;
+    top: 40px;
+    right: 45px;
+    border: 2px dashed #9c3d3d;
+    color: #9c3d3d;
+    padding: 8px 12px;
+    font-family: 'Cinzel', serif;
+    font-size: 0.85rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    transform: rotate(8deg);
+    opacity: 0.85;
+}
+
+.footer {
+    margin-top: 50px;
+    text-align: center;
+    border-top: 1px dashed #c2b193;
+    padding-top: 20px;
+    font-size: 0.9rem;
+    color: #6e5843;
+}
+
+.page-number {
+    font-family: 'Cinzel', serif;
+    margin-top: 8px;
+    letter-spacing: 3px;
+    font-size: 0.8rem;
+}
+
+/* --- 10. Vintage Bottom Navigation --- */
+.page-navigation {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 950px;
+    margin-top: 25px;
+    z-index: 5;
+}
+
+.vintage-btn {
+    display: inline-block;
+    background: #4a3320;
+    color: #f4ebd9;
+    text-decoration: none;
+    padding: 12px 24px;
+    font-family: 'Cinzel', serif;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    border: 1px solid #7a5839;
+    border-radius: 2px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+}
+
+.vintage-btn:hover {
+    background: #6e4b2f;
+    color: #ffffff;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.4);
+    transform: translateY(-2deg);
+}
+
+/* --- 11. Responsive Design --- */
+@media (max-width: 768px) {
+    .scrapbook {
+        padding: 40px 20px;
+    }
+
+    .title {
+        font-size: 2rem;
+    }
+
+    .subtitle {
+        font-size: 1.2rem;
+    }
+
+    .polaroid {
+        width: 100%;
+        max-width: 280px;
+    }
+
+    .film-left, .film-right {
+        display: none;
+    }
+    
+    .sticker, .leaf, .flower {
+        display: none; /* Hide heavy floating graphics on smaller screens */
+    }
+
+    .stamp {
+        position: relative;
+        top: 0;
+        right: 0;
+        display: inline-block;
+        margin-bottom: 20px;
+    }
+}

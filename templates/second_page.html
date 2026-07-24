@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Scrapbook - Memories</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Poppins:wght@300;400;500&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/second_page.css') }}">
+</head>
+<body>
+
+    <!-- Background Effects -->
+    <div class="glitter"></div>
+    
+    <div class="coffee1"></div>
+    <div class="coffee2"></div>
+    
+    <div class="film-left"></div>
+    <div class="film-right"></div>
+    
+    <!-- Fairy Lights -->
+    <div class="fairy-lights">
+        <span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span>
+        <span></span><span></span>
+    </div>
+    
+    <div class="scrapbook">
+    
+        <!-- Decorative Corners -->
+    
+        <div class="corner tl">❀</div>
+        <div class="corner tr">❀</div>
+        <div class="corner bl">❀</div>
+        <div class="corner br">❀</div>
+    
+        <!-- Heading -->
+    
+        <h1 class="title">
+            ✦ BEAUTIFUL MEMORIES ✦
+        </h1>
+    
+        <p class="subtitle">
+            Every photograph whispers a beautiful story...
+        </p>
+    
+        <!-- Handwritten Note -->
+    
+        <div class="note">
+            "Life isn't measured by time,
+            but by moments we never forget."
+        </div>
+    
+        <!-- Decorative Elements -->
+    
+        <div class="sticker compass">🧭</div>
+        <div class="sticker camera">📷</div>
+        <div class="sticker ticket">🎟</div>
+        <div class="sticker star">⭐</div>
+    
+        <div class="leaf leaf1">🍂</div>
+        <div class="leaf leaf2">🌿</div>
+    
+        <div class="flower flower1">🌼</div>
+        <div class="flower flower2">🌸</div>
+    
+        <!-- Photo Area -->
+    
+        <div class="photo-area">
+    
+            <div class="polaroid p1">
+                <img src="{{ url_for('static', filename='images/mine.jpeg') }}">
+                <h3>Mine❤️</h3>
+                <p>Forever my favourite person.</p>
+            </div>
+    
+            <div class="polaroid p2">
+                <img src="{{ url_for('static', filename='images/ourjourney.jpeg') }}">
+                <h3>Our Journey</h3>
+                <p>Next one is on the way right?😏.</p>
+            </div>
+    
+            <div class="polaroid p3">
+                <img src="{{ url_for('static', filename='images/crazydays.jpeg') }}">
+                <h3>Crazy Days</h3>
+                <p>Uncle cropped😂.</p>
+            </div>
+    
+            <div class="polaroid p4">
+                <img src="{{ url_for('static', filename='images/goldenmom.jpeg') }}">
+                <h3>Golden Moments</h3>
+                <p>Memories that shine forever.</p>
+            </div>
+    
+            <div class="polaroid p5">
+                <img src="{{ url_for('static', filename='images/bdayboy.jpeg') }}">
+                <h3>Birthday Boy 🎂</h3>
+                <p>The hero of today's story.</p>
+            </div>
+    
+        </div>
+    
+        <!-- Memory Quote -->
+    
+        <div class="quote-card">
+    
+            <h2>Memory</h2>
+    
+            <p>
+    
+                “Some people make the world special simply
+                because they are in it. Every smile,
+                every laugh and every memory with you
+                is a treasure I'll always keep.”
+    
+            </p>
+    
+        </div>
+    
+        <!-- Envelope -->
+    
+        <div class="envelope">
+    
+            <div class="wax-seal">❤</div>
+    
+            <div class="flap"></div>
+    
+            <div class="letter">
+    
+                <h2>Happy Birthday!</h2>
+    
+                <p>
+    
+                    <!-- May every dream become reality.
+                     
+    
+                    May happiness follow you wherever life takes you.
+    
+                    Thank you for filling every memory with joy,
+                    laughter and endless smiles. -->
+                    Always grateful to meet you....When devil can't reach you, they send a person
+                    like you 👻. 
+                    But anyways, I am proud of the person you are, I think I can't deny in accepting the fact 
+                    that you are more than any attachment, love , attraction, affection......Mtlb ki hoga phle attachment but 
+                    if there is a feeling which exists for more than attraction, toh wo ho tm ab, words tm khud dhund lena aur mereko bhi bta dena (note krlo)  .  
+                    Wishing you a lifetime of success,
+                    love and unforgettable adventures.
+    
+                </p>
+    
+            </div>
+    
+        </div>
+    
+        <!-- Vintage Stamp -->
+    
+        <div class="stamp">
+            ✉ POST
+        </div>
+    
+        <!-- Footer -->
+    
+        <div class="footer">
+    
+            <span>Made with ❤️</span>
+    
+            <div class="page-number">
+                ─── Page 02 ───
+            </div>
+    
+        </div>
+    
+    </div>
+    <!-- Page Navigation -->
+
+<div class="page-navigation">
+
+    <a href="/next_page" class="vintage-btn">
+        ❮ Last Page
+    </a>
+
+
+    <a href="/third_page" class="vintage-btn">
+        Next Page ❯
+    </a>
+
+</div>
+    
+    </body>
+</html>

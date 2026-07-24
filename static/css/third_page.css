@@ -1,0 +1,483 @@
+/* =========================================================
+   VINTAGE LOVE STORY THEME VARIABLES - PAGE 3
+   ========================================================= */
+   :root {
+    --paper-bg: #f7f1e3;
+    --ink-dark: #2b1e1a;
+    --ink-sepia: #5c4033;
+    --crimson-accent: #8b0000;
+    --rose-gold: #c58373;
+    --gold-accent: #d4af37;
+    
+    --font-heading: 'Cinzel', serif;
+    --font-body: 'Playfair Display', serif;
+    --font-script: 'Alex Brush', cursive;
+}
+
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+}
+
+body {
+    min-height: 100vh;
+    background-color: #0a0808;
+    font-family: var(--font-body);
+    color: var(--ink-dark);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 15px;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* =========================================================
+   1. AMBIENT BACKDROPS
+   ========================================================= */
+.candlelight-overlay {
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: 100vw; 
+    height: 100vh;
+    background: radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.15) 0%, rgba(0,0,0,0.92) 80%);
+    pointer-events: none; 
+    z-index: 0;
+    animation: flicker 4s infinite alternate;
+}
+
+@keyframes flicker {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.9; }
+}
+
+#ambient-canvas {
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: 100vw; 
+    height: 100vh;
+    pointer-events: none; 
+    z-index: 1;
+}
+
+/* =========================================================
+   2. FAIRY LIGHTS
+   ========================================================= */
+.fairy-lights {
+    position: absolute; 
+    top: -10px; 
+    left: 0; 
+    width: 100%;
+    display: flex; 
+    justify-content: space-around; 
+    z-index: 10;
+    pointer-events: none; 
+    list-style: none;
+    border-top: 2px solid rgba(40, 50, 40, 0.4);
+}
+
+.fairy-lights li {
+    width: 12px; 
+    height: 24px; 
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.9);
+    animation: glow 1.5s infinite alternate;
+}
+
+@keyframes glow {
+    0% { opacity: 0.3; box-shadow: 0 0 5px rgba(255, 223, 112, 0.4); }
+    100% { opacity: 1; box-shadow: 0 0 20px 8px rgba(255, 223, 112, 0.9); }
+}
+
+/* =========================================================
+   3. TORN PARCHMENT CONTAINER
+   ========================================================= */
+.torn-paper-wrapper {
+    position: relative; 
+    z-index: 2;
+    filter: drop-shadow(0 20px 30px rgba(0,0,0,0.8));
+}
+
+.a4 {
+    width: 100%; 
+    max-width: 820px; 
+    min-height: 1150px;
+    background: var(--paper-bg);
+    background-image: 
+        radial-gradient(ellipse at center, rgba(255,255,255,0.4) 0%, rgba(230, 210, 180, 0.8) 100%),
+        radial-gradient(circle at 10% 10%, rgba(92, 64, 51, 0.15) 0%, transparent 50%);
+    padding: 50px 60px;
+    display: flex; 
+    flex-direction: column; 
+    justify-content: space-between;
+    position: relative; 
+    overflow: hidden;
+    clip-path: polygon(
+        0% 2%, 2% 0%, 5% 3%, 8% 1%, 12% 4%, 16% 0%, 20% 3%, 25% 1%, 29% 4%, 34% 0%, 39% 3%, 44% 1%, 49% 4%, 53% 0%, 58% 3%, 63% 1%, 67% 4%, 72% 0%, 76% 3%, 81% 1%, 86% 4%, 90% 0%, 95% 3%, 98% 1%, 100% 2%, 
+        100% 98%, 98% 100%, 95% 97%, 90% 100%, 86% 96%, 81% 99%, 76% 97%, 72% 100%, 67% 96%, 63% 99%, 58% 97%, 53% 100%, 49% 96%, 44% 99%, 39% 97%, 34% 100%, 29% 96%, 25% 99%, 20% 97%, 16% 100%, 12% 96%, 8% 99%, 5% 97%, 2% 100%, 0% 98%
+    );
+}
+
+.a4::after {
+    content: ''; 
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    right: 0; 
+    bottom: 0;
+    box-shadow: inset 0 0 50px rgba(92, 64, 51, 0.6); 
+    pointer-events: none; 
+    z-index: 5;
+}
+
+/* Stamp Accent */
+.vintage-stamp {
+    position: absolute; 
+    top: 35px; 
+    right: 40px;
+    border: 2px dashed var(--crimson-accent); 
+    padding: 5px 12px;
+    transform: rotate(6deg); 
+    z-index: 6;
+}
+
+.stamp-inner {
+    font-family: var(--font-heading); 
+    font-size: 0.7rem;
+    font-weight: 700; 
+    letter-spacing: 2px; 
+    color: var(--crimson-accent);
+}
+
+/* =========================================================
+   4. GRAMOPHONE / MUSIC WIDGET
+   ========================================================= */
+.gramophone-widget {
+    position: absolute; 
+    top: 35px; 
+    left: 40px;
+    display: flex; 
+    align-items: center; 
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.4); 
+    border: 1px solid var(--rose-gold);
+    padding: 6px 14px; 
+    border-radius: 20px; 
+    cursor: pointer; 
+    z-index: 6;
+    transition: all 0.3s ease;
+}
+
+.gramophone-widget:hover { 
+    background: rgba(255, 255, 255, 0.7); 
+    transform: scale(1.03); 
+}
+
+.vinyl-record {
+    width: 22px; 
+    height: 22px; 
+    border-radius: 50%;
+    background: radial-gradient(circle, #333 30%, #000 70%);
+    border: 2px solid var(--gold-accent);
+}
+
+.vinyl-record.spinning { 
+    animation: spinVinyl 3s linear infinite; 
+}
+
+@keyframes spinVinyl { 
+    100% { transform: rotate(360deg); } 
+}
+
+.music-info { 
+    font-family: var(--font-heading); 
+    font-size: 0.75rem; 
+    color: var(--ink-sepia); 
+}
+
+/* =========================================================
+   5. HEADER SECTION
+   ========================================================= */
+.header { 
+    text-align: center; 
+    margin-top: 35px; 
+    margin-bottom: 25px; 
+    z-index: 6; 
+}
+
+.vintage-subtitle-top { 
+    font-family: var(--font-heading); 
+    font-size: 0.8rem; 
+    letter-spacing: 3px; 
+    color: var(--ink-sepia); 
+    text-transform: uppercase; 
+}
+
+.title { 
+    font-family: var(--font-heading); 
+    font-size: 2.3rem; 
+    margin: 6px 0; 
+}
+
+.title .highlight { 
+    color: var(--crimson-accent); 
+    font-style: italic; 
+}
+
+.quote { 
+    font-style: italic; 
+    color: var(--ink-sepia); 
+    font-size: 0.95rem; 
+}
+
+/* =========================================================
+   6. SCRAPBOOK PHOTOS SECTION
+   ========================================================= */
+.scrapbook-gallery {
+    display: flex; 
+    justify-content: space-around; 
+    gap: 15px;
+    margin: 20px 0 35px; 
+    z-index: 6; 
+    perspective: 800px;
+}
+
+.polaroid-card {
+    background: #fff; 
+    padding: 10px 10px 18px 10px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    width: 30%; 
+    transition: all 0.4s ease; 
+    cursor: pointer; 
+    position: relative;
+}
+
+.polaroid-card:hover { 
+    transform: scale(1.08) rotate(0deg) !important; 
+    z-index: 10; 
+    box-shadow: 0 15px 30px rgba(0,0,0,0.4); 
+}
+
+.tilt-left { transform: rotate(-5deg); }
+.tilt-right { transform: rotate(4deg); }
+.tilt-straight { transform: rotate(-1deg); }
+
+.tape-strip {
+    position: absolute; 
+    top: -10px; 
+    left: 25%; 
+    width: 50px; 
+    height: 18px;
+    background: rgba(230, 215, 190, 0.8); 
+    border: 1px dashed rgba(180, 150, 120, 0.5);
+    transform: rotate(-3deg); 
+    z-index: 2;
+}
+
+.photo-frame { 
+    width: 100%; 
+    height: 140px; 
+    overflow: hidden; 
+    background: #ddd; 
+}
+
+.photo-frame img { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+    filter: sepia(0.3); 
+    transition: filter 0.3s ease; 
+}
+
+.polaroid-card:hover img { 
+    filter: sepia(0); 
+}
+
+.caption { 
+    font-family: var(--font-script); 
+    font-size: 1.2rem; 
+    text-align: center; 
+    color: var(--ink-sepia); 
+    margin-top: 6px; 
+}
+
+/* =========================================================
+   7. INTERACTIVE WISH ENVELOPES (BULLETPROOF 3D FLIP)
+   ========================================================= */
+   .wishes-section { 
+    z-index: 20; /* High z-index to stay above background layers */
+    margin-bottom: 25px; 
+    position: relative;
+}
+
+.section-title { 
+    font-family: var(--font-heading); 
+    font-size: 0.9rem; 
+    text-align: center; 
+    color: var(--crimson-accent); 
+    margin-bottom: 18px; 
+    letter-spacing: 1px; 
+}
+
+.envelopes-grid { 
+    display: flex; 
+    justify-content: space-between; 
+    gap: 15px; 
+}
+
+.envelope-card {
+    width: 31%; 
+    height: 140px; 
+    perspective: 1000px; /* Perspective belongs on the parent */
+    cursor: pointer;
+    position: relative;
+    z-index: 25;
+}
+
+.envelope-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+}
+
+/* FLIP TRIGGER CLASS */
+.envelope-card.open .envelope-inner {
+    transform: rotateY(180deg);
+}
+
+.envelope-front, 
+.envelope-back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; 
+    height: 100%; 
+    border-radius: 6px; 
+    padding: 15px;
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2); 
+    border: 1px solid var(--rose-gold);
+}
+
+.envelope-front { 
+    background: #efe3ce; 
+    z-index: 2;
+    transform: rotateY(0deg);
+}
+
+.envelope-back { 
+    background: #fff8eb; 
+    transform: rotateY(180deg);
+    text-align: center; 
+    font-size: 0.88rem; 
+    color: var(--ink-dark); 
+    line-height: 1.4;
+    border: 2px dashed var(--rose-gold);
+}
+
+.envelope-card:hover .envelope-front {
+    box-shadow: 0 10px 20px rgba(139, 0, 0, 0.3);
+}
+
+.wax-seal { 
+    font-size: 2rem; 
+    margin-bottom: 5px; 
+    transition: transform 0.3s ease;
+}
+
+.envelope-card:hover .wax-seal {
+    transform: scale(1.15);
+}
+
+.envelope-label { 
+    font-family: var(--font-heading); 
+    font-size: 0.75rem; 
+    color: var(--ink-sepia); 
+    letter-spacing: 1px; 
+    font-weight: 600;
+}
+
+/* =========================================================
+   8. FOOTER SECTION
+   ========================================================= */
+.footer-note { 
+    text-align: center; 
+    z-index: 6; 
+    margin-top: 15px; 
+}
+
+.handwritten-closing { 
+    font-family: var(--font-script); 
+    font-size: 2rem; 
+    color: var(--ink-sepia); 
+}
+
+.signature-line { 
+    font-family: var(--font-heading); 
+    font-size: 0.9rem; 
+    letter-spacing: 2px; 
+    text-transform: uppercase; 
+    margin-top: -5px; 
+}
+
+.signature-line span { 
+    color: var(--crimson-accent); 
+    font-weight: 700; 
+}
+
+/* =========================================================
+   9. RESPONSIVE DESIGN
+   ========================================================= */
+@media (max-width: 768px) {
+    .a4 { padding: 35px 20px; }
+    .scrapbook-gallery, .envelopes-grid { flex-direction: column; align-items: center; }
+    .polaroid-card, .envelope-card { width: 85%; margin-bottom: 15px; }
+}
+/* =========================================================
+   VINTAGE NAVIGATION BUTTONS
+   ========================================================= */
+   .vintage-nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 25px;
+    padding-top: 15px;
+    border-top: 1px dashed var(--rose-gold);
+    z-index: 10;
+    position: relative;
+}
+
+.vintage-btn {
+    font-family: var(--font-heading);
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--ink-sepia);
+    text-decoration: none;
+    padding: 8px 18px;
+    border: 1px solid var(--rose-gold);
+    background: rgba(255, 248, 235, 0.6);
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    letter-spacing: 1px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.vintage-btn:hover {
+    background: var(--crimson-accent);
+    color: #fff8eb;
+    border-color: var(--crimson-accent);
+    box-shadow: 0 4px 12px rgba(139, 0, 0, 0.3);
+    transform: translateY(-2px);
+}

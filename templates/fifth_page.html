@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter V — The Cosmic Poem</title>
+
+    <!-- Vintage & Celestial Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@500;700;900&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/fifth_page.css') }}">
+</head>
+<body>
+
+<!-- Dynamic Multi-Layer Cosmic Backgrounds -->
+<canvas id="galaxy-canvas"></canvas>
+<canvas id="particle-canvas"></canvas>
+
+<!-- Ambient Glowing Nebulae Lights -->
+<div class="nebula-glow nebula-1"></div>
+<div class="nebula-glow nebula-2"></div>
+
+<div class="torn-paper-wrapper">
+    <div class="a4 parchment-paper cosmic-parchment">
+
+        <!-- Constellation Stamp Header -->
+        <div class="vintage-stamp">
+            <span class="stamp-inner">✦ CHAPTER V ✦</span>
+        </div>
+
+        <!-- Header -->
+        <header class="header">
+            <span class="vintage-subtitle-top">✨ Authored Among The Constellations ✨</span>
+            <h1 class="title">Written In <span class="highlight">Starlight</span></h1>
+            <p class="quote">“If every star was a memory, the cosmos still couldn't hold all my love for you.”</p>
+        </header>
+
+        <!-- GALAXY POEM SECTION -->
+        <section class="galaxy-poem-section">
+            <div class="poem-card">
+                <div class="poem-container" id="poem-container">
+                    
+                    <!-- Paragraph 1 -->
+                    <div class="glowing-paragraph" id="para-1">
+                        <p>In a universe of infinite space and endless time,</p>
+                        <p>My favorite miracle will always be that you are mine.</p>
+                    </div>
+
+                    <!-- Paragraph 2 -->
+                    <div class="glowing-paragraph" id="para-2">
+                        <p>Out of billions of stars floating softly through the night,</p>
+                        <p>Your smile is the only light that makes my world bright.</p>
+                    </div>
+
+                    <!-- Paragraph 3 -->
+                    <div class="glowing-paragraph" id="para-3">
+                        <p>Through silent nebulae and quiet cosmos so deep,</p>
+                        <p>You are the sweetest dream that I will forever keep.</p>
+                    </div>
+
+                    <!-- Final Line / Paragraph 4 -->
+                    <div class="glowing-paragraph final-para" id="para-4">
+                        <p class="final-line">“You are, and will always be, my entire universe.” ✨🌌</p>
+                    </div>
+
+                </div>
+
+                <!-- Reveal Button -->
+                <div class="action-controls">
+                    <button class="vintage-action-btn" id="start-poem-btn" onclick="revealGalaxyPoem()">
+                        🌌 Reveal The Starlight Poem
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Closing Note -->
+        <footer class="footer-note">
+            <p class="handwritten-closing">Yours, until the last star burns out...</p>
+            <p class="signature-line">Forever Authored By, <span>Chhavi</span></p>
+        </footer>
+
+        <!-- Navigation Buttons -->
+        <nav class="vintage-nav-container">
+            <a href="{{ url_for('fourth_page') }}" class="vintage-btn">← Previous Chapter</a>
+            <a href="{{ url_for('sixth_page') }}" class="vintage-btn">Go on Yogi</a>
+        </nav>
+
+    </div>
+</div>
+
+<script src="{{ url_for('static', filename='js/fifth_page.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Unbroken Seal — Mystic Envelope Vault</title>
+
+    <!-- Modern Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Dancing+Script:wght@600&family=Plus+Jakarta+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/sixth_page.css') }}">
+</head>
+<body>
+
+<div class="stars-bg"></div>
+
+<!-- TOP NAVIGATION BAR -->
+<div class="top-nav">
+    <a href="{{ url_for('fifth_page') }}" class="nav-btn back-btn">
+        <span>←</span> Back
+    </a>
+</div>
+
+<!-- 3D FLIP CONTAINER -->
+<div class="flip-card-container">
+    <div class="flip-card-inner" id="card-flipper">
+        
+        <!-- FRONT SIDE: THE PUZZLE -->
+        <div class="card-face card-front">
+            <div class="cosmic-header">
+                <span class="badge">SECURITY CLEARANCE REQUIRED</span>
+                <h1>The Confession Cipher</h1>
+                <p>Unlock the vault with the date of the game where it all began.</p>
+            </div>
+
+            <!-- PUZZLE LOCK MECHANISM -->
+            <div class="puzzle-vault">
+                <div class="hint-box">
+                    <span class="hint-icon">🗝️</span>
+                    <p class="hint-text">
+                        <strong>The Setup:</strong> The date of that Truth & Dare game, jb hm confess kiye the..aapko date toh yaad hoga hi hai na?... <em>(Format: DD - MM)</em>
+                    </p>
+                </div>
+
+                <!-- 4 DIAL WHEELS FOR DATE (11-12) -->
+                <div class="dial-wheels">
+                    <!-- Day Wheel 1 -->
+                    <div class="wheel-group">
+                        <button class="wheel-btn" onclick="changeDigit(1, 1)">▲</button>
+                        <div class="digit-display" id="digit-1">0</div>
+                        <button class="wheel-btn" onclick="changeDigit(1, -1)">▼</button>
+                    </div>
+                    <!-- Day Wheel 2 -->
+                    <div class="wheel-group">
+                        <button class="wheel-btn" onclick="changeDigit(2, 1)">▲</button>
+                        <div class="digit-display" id="digit-2">0</div>
+                        <button class="wheel-btn" onclick="changeDigit(2, -1)">▼</button>
+                    </div>
+
+                    <div class="date-separator">-</div>
+
+                    <!-- Month Wheel 1 -->
+                    <div class="wheel-group">
+                        <button class="wheel-btn" onclick="changeDigit(3, 1)">▲</button>
+                        <div class="digit-display" id="digit-3">0</div>
+                        <button class="wheel-btn" onclick="changeDigit(3, -1)">▼</button>
+                    </div>
+                    <!-- Month Wheel 2 -->
+                    <div class="wheel-group">
+                        <button class="wheel-btn" onclick="changeDigit(4, 1)">▲</button>
+                        <div class="digit-display" id="digit-4">0</div>
+                        <button class="wheel-btn" onclick="changeDigit(4, -1)">▼</button>
+                    </div>
+                </div>
+
+                <button class="unlock-btn" onclick="checkPuzzle()">🔓 Reveal The Vault</button>
+                <p class="error-msg" id="error-msg">Incorrect combination. Think back to December 11th...</p>
+            </div>
+        </div>
+
+        <!-- BACK SIDE: THE 5 ENVELOPES & SCRATCH CARDS -->
+        <div class="card-face card-back">
+            <div class="cosmic-header">
+                <span class="badge">ACCESS GRANTED</span>
+                <h1>Open When...</h1>
+                <p>Pick an envelope or scratch to reveal parallel universes!</p>
+            </div>
+
+            <!-- ENVELOPES GRID -->
+            <div class="envelopes-grid">
+                <div class="envelope-item" onclick="openLetter('laugh')">
+                    <div class="env-body">
+                        <span class="env-icon">😂</span>
+                        <p class="env-title">Open when you want to laugh</p>
+                    </div>
+                </div>
+
+                <div class="envelope-item" onclick="openLetter('sad')">
+                    <div class="env-body">
+                        <span class="env-icon">🌧️</span>
+                        <p class="env-title">Open when you are sad</p>
+                    </div>
+                </div>
+
+                <div class="envelope-item" onclick="openLetter('shoulder')">
+                    <div class="env-body">
+                        <span class="env-icon">🫂</span>
+                        <p class="env-title">Open when you miss a shoulder</p>
+                    </div>
+                </div>
+
+                <div class="envelope-item" onclick="openLetter('cry')">
+                    <div class="env-body">
+                        <span class="env-icon">💔</span>
+                        <p class="env-title">Open when you want to cry</p>
+                    </div>
+                </div>
+
+                <div class="envelope-item" onclick="openLetter('love')">
+                    <div class="env-body">
+                        <span class="env-icon">✨</span>
+                        <p class="env-title">Open when you need a reminder</p>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="section-divider">
+
+            <!-- SCRATCH CARDS SECTION -->
+            <h2 class="scratch-section-title">✨ If We Were... (Scratch to Reveal) ✨</h2>
+            <div class="scratch-grid">
+                <!-- Scratch 1 -->
+                <div class="scratch-card">
+                    <span class="scratch-label">If we were cartoon characters...</span>
+                    <div class="scratch-content">
+                        <img src="{{ url_for('static', filename='images/tomjerry.jpg') }}" class="reveal-img" alt="Tom and Jerry">
+                        <span>Tom & Jerry 🐱🐭</span>
+                    </div>
+                    <canvas class="scratch-canvas" id="scratch-1"></canvas>
+                </div>
+
+                <!-- Scratch 2 -->
+                <div class="scratch-card">
+                    <span class="scratch-label">If we were movie characters...</span>
+                    <div class="scratch-content">
+                        <img src="{{ url_for('static', filename='images/chennai_exp.jpg') }}" class="reveal-img" alt="Chennai Express">
+                        <span>Chennai Express (Rahul & Meenamma) 🚂</span>
+                    </div>
+                    <canvas class="scratch-canvas" id="scratch-2"></canvas>
+                </div>
+
+                <!-- Scratch 3 -->
+                <div class="scratch-card">
+                    <span class="scratch-label">If we were a book...</span>
+                    <div class="scratch-content">
+                        <img src="{{ url_for('static', filename='images/book.jpg') }}" class="reveal-img" alt="Book">
+                        <span>You Only Live Once 📖✨</span>
+                    </div>
+                    <canvas class="scratch-canvas" id="scratch-3"></canvas>
+                </div>
+
+                <!-- Scratch 4 -->
+                <div class="scratch-card">
+                    <span class="scratch-label">If we were a song...</span>
+                    <div class="scratch-content">
+                        <img src="{{ url_for('static', filename='images/song.jpg') }}" class="reveal-img" alt="Song">
+                        <span>Love story -Taylor swift 🎶❤️</span>
+                    </div>
+                    <canvas class="scratch-canvas" id="scratch-4"></canvas>
+                </div>
+            </div>
+
+            <!-- NEXT PAGE BUTTON INSIDE CARD -->
+            <div class="next-nav-container">
+                <a href="{{ url_for('seventh_page') }}" class="nav-btn next-btn">
+                    Next Page <span>→</span>
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<!-- LETTER MODAL OVERLAY -->
+<div class="modal-overlay" id="letter-modal">
+    <div class="modal-card">
+        <button class="close-btn" onclick="closeLetter()">✕</button>
+        <span class="modal-emoji" id="modal-emoji">💌</span>
+        <h2 class="modal-title" id="modal-title">Letter Title</h2>
+        <div class="modal-body" id="modal-body">
+            <!-- Dynamic content injected here -->
+        </div>
+    </div>
+</div>
+
+<script src="{{ url_for('static', filename='js/sixth_page.js') }}"></script>
+</body>
+</html>
