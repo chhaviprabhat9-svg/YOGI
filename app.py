@@ -5,7 +5,7 @@ app = Flask(__name__)
 # Best practice: use an environment variable for secret key, fallback to string if local
 app.secret_key = os.environ.get("SECRET_KEY", "birthday_secret")
 
-CORRECT_PASSWORD = "11thDec"
+CORRECT_PASSWORD = "AlwaysYogi"
 
 @app.route("/")
 def home():
